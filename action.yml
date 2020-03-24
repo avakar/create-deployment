@@ -1,0 +1,60 @@
+name: Create a GitHub deployment
+description: Create a new deployment in your repo.
+
+inputs:
+  ref:
+    description: |
+      The ref to deploy. This can be a branch, tag, or SHA.
+    default: ''
+  task:
+    description: |
+      Specifies a task to execute. Default: "deploy"
+    default: deploy
+  auto_merge:
+    description: |
+      Attempts to automatically merge the default branch into the requested ref,
+      if it's behind the default branch. Default: true
+    default: true
+  required_contexts:
+    description: |
+      The status contexts to verify against commit status checks. If you omit
+      this parameter, GitHub verifies all unique contexts before creating
+      a deployment. To bypass checking entirely, pass an empty array.
+      Defaults to all unique contexts.
+    default: '*'
+  payload:
+    description: |
+      JSON payload with extra information about the deployment. Default: ""
+    default: ''
+  environment:
+    description: |
+      Name for the target deployment environment (e.g., production, staging, qa).
+      Default: production
+    default: production
+  description:
+    description: |
+      Short description of the deployment. Default: ""
+    default: ''
+  production_environment:
+    description: |
+      Specifies if the given environment is one that end-users directly
+      interact with. Default: true when environment is production
+      and false otherwise.
+    default: ''
+  transient_environment:
+    description: |
+      Specifies if the given environment is specific to the deployment
+      and will no longer exist at some point in the future. Default: false
+    default: 'false'
+
+outputs:
+  deployment_id:
+    description: The identifier of the newly created deployment.
+  deployment_url:
+    description: The API url of the newly created deployment.
+  statuses_url:
+    description: The API url of the deployment statuses.
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
