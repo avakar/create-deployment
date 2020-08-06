@@ -1284,7 +1284,7 @@ async function main() {
     if (required_contexts === '') {
       req['required_contexts'] = [];
     } else {
-      req['required_contexts'] = required_contexts_text.split(',');
+      req['required_contexts'] = required_contexts.split(',');
     }
   }
 
