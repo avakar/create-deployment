@@ -1251,7 +1251,7 @@ const core = __webpack_require__(633);
 const { GitHub, context } = __webpack_require__(479);
 
 async function main() {
-  const ref = core.getInput('ref') || context.sha;
+  const ref = core.getInput('ref') || context.ref || context.sha;
   const task = core.getInput('task', { required: true });
   const auto_merge = core.getInput('auto_merge') === 'true';
   const environment = core.getInput('environment', { required: true });
