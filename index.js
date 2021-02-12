@@ -2,7 +2,12 @@ const core = require('@actions/core');
 const { GitHub, context } = require('@actions/github');
 
 async function main() {
-  const ref = core.getInput('ref') || context.ref || context.sha;
+  const prRef =
+    context.payload &&
+    context.payload.pull_request &&
+    context.payload.pull_request.head &&
+    context.payload.pull_request.head.sha;
+  const ref = core.getInput('ref') || prRef || context.ref || context.sha;
   const task = core.getInput('task', { required: true });
   const auto_merge = core.getInput('auto_merge') === 'true';
   const environment = core.getInput('environment', { required: true });
