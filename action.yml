@@ -46,6 +46,14 @@ inputs:
       Specifies if the given environment is specific to the deployment
       and will no longer exist at some point in the future. Default: false
     default: 'false'
+  owner:
+    description: |
+      Repository owner
+    default: ''
+  repo:
+    description: |
+      Repository name
+    default: ''
 
 outputs:
   deployment_id:
