@@ -48,6 +48,8 @@ To summarize, these are the parameters and their defaults.
 * `production_environment`: defaults to true for production environment,
   otherwise false
 * `transient_environment`: defaults to false
+* `owner`: defaults to the current repository's owner
+* `repo`: defaults to the current repository
 
   [3]: https://developer.github.com/v3/repos/deployments/#create-a-deployment
 

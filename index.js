@@ -8,11 +8,12 @@ async function main() {
   const environment = core.getInput('environment', { required: true });
   const description = core.getInput('description');
   const transient_environment = core.getInput('transient_environment') === 'true';
+  const owner = core.getInput('owner') || context.repo.owner;
+  const repo = core.getInput('repo') || context.repo.repo;
 
   const default_production_environment = (environment === 'production').toString();
   const production_environment = (core.getInput('production_environment') || default_production_environment) === 'true';
 
-  const { owner, repo } = context.repo;
   const req = {
     owner,
     repo,
